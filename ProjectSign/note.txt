@@ -1,0 +1,152 @@
+
+想把AppStore上的App下载后，做下适当修改，然后又怎么在手机上跑起来呢?
+当别人发我们一个Build后的app文件或者Archive包或者IPA文件，如果不是使用企业证书签名的，又如何安装到我们自己的手机上呢？这就需要重签名来解决
+
+一、Xcode生成的应用的重签名
+
+Xcode Build后的app重签名
+1. 有效的证书（可以在钥匙串中查找）
+    security find-identity -v -p codesigning
+
+2. mobileprovision 配置描述文件
+
+    把它拷贝到app的目录里  (替换配置文件)
+
+注意:
+这里的app如果是自己Xcode生成的，那这个mobileprovision文件可以直接使用现成的;如果是其他人开发的，那就要根据该app的Bundle identifier以及capacity来生成对应的mobileprovision文件才行
+Bundle identifier可以通过app包里的info.plist文件查看
+
+3.  生成entitlements.plist文件
+先通过“security”命令，从mobileprovision文件中生成一个完整的plist文件
+security cms -D -i "mobileprovision文件" > "entitlements.plist文件"
+我们只是为了得到里面的 “Entitlements”字段，使用如下的命令
+/usr/libexec/PlistBuddy -x -c 'Print:Entitlements'  entitlements_full.plist > entitlements.plist
+
+第一步
+
+解压IPA
+
+    unzip  -o -d ./temp/  HZBank.ipa
+
+tips:
+    把myfile.zip文件解压到 /home/sunny/
+    -o:不提示的情况下覆盖文件；
+    -d:-d /home/sunny 指明将文件解压缩到/home/sunny目录下；
+
+第二步
+
+删除旧的代码签名
+
+    rm -rf ./temp/Payload/HZBank.app/_CodeSignature
+
+第三步
+
+更换证书
+
+cp embedded.mobileprovision ./temp/Payload/HZBank.app/embedded.mobileprovision
+
+第四步
+
+重签名
+
+/usr/bin/codesign -f -s "iPhone Distribution: Bank of Hangzhou Co., Ltd." --entitlements entitlements.plist ./temp/Payload/HZBank.app
+
+tips:
+    -s  "签名证书"  用该证书签名
+    -f 用选择的签名证书替换已有的
+
+    codesign -vv -d Example.app 列出一些有关 Example.app 的签名信息
+
+第五步
+
+重新打包，生成新的ipa
+
+zip -r appName.ipa ./temp/Payload
+
+
+
+可能的问题
+
+在第四步时有可能会报错：object file format unrecognized, invalid, or unsuitable
+解决方法：
+1）首先查看/usr/bin目录下是否存在codesign_allocate程序，如果存在，执行改名操作。 如果不存在，直接执行第二步
+sudo mv /usr/bin/codesign_allocate /usr/bin/codesign_allocate_old
+
+2）将xcode目录下的codesign_allocate做一个软链接
+
+sudo ln -s /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate /usr/bin
+
+entitlements.plist授权文件
+重签名时可能需要处理。
+在签名shell codesign中加入参数：
+--entitlements entitlements.plist
+
+
+tips:
+    快速显示Mac系统中能用来对代码签名的证书
+    security find-identity -v -p codesigning
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

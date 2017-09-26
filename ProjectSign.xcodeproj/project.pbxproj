@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D00401B1F5CEE00007DE1F9 /* note.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D00401A1F5CEE00007DE1F9 /* note.txt */; };
 		4DFDDA621F593BFC00246FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDDA611F593BFC00246FCA /* main.m */; };
 		4DFDDA651F593BFC00246FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDDA641F593BFC00246FCA /* AppDelegate.m */; };
 		4DFDDA681F593BFC00246FCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDDA671F593BFC00246FCA /* ViewController.m */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D00401A1F5CEE00007DE1F9 /* note.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = note.txt; sourceTree = "<group>"; };
 		4DFDDA5D1F593BFC00246FCA /* ProjectSign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectSign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFDDA611F593BFC00246FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DFDDA631F593BFC00246FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +41,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D00401C1F5CEE5C007DE1F9 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		4DFDDA541F593BFC00246FCA = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +67,8 @@
 		4DFDDA5F1F593BFC00246FCA /* ProjectSign */ = {
 			isa = PBXGroup;
 			children = (
+				4D00401C1F5CEE5C007DE1F9 /* Test */,
+				4D00401A1F5CEE00007DE1F9 /* note.txt */,
 				4DFDDA631F593BFC00246FCA /* AppDelegate.h */,
 				4DFDDA641F593BFC00246FCA /* AppDelegate.m */,
 				4DFDDA661F593BFC00246FCA /* ViewController.h */,
@@ -110,7 +121,7 @@
 				TargetAttributes = {
 					4DFDDA5C1F593BFC00246FCA = {
 						CreatedOnToolsVersion = 8.3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -137,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D00401B1F5CEE00007DE1F9 /* note.txt in Resources */,
 				4DFDDA701F593BFC00246FCA /* LaunchScreen.storyboard in Resources */,
 				4DFDDA6D1F593BFC00246FCA /* Assets.xcassets in Resources */,
 				4DFDDA6B1F593BFC00246FCA /* Main.storyboard in Resources */,
@@ -272,10 +284,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bank of Hangzhou Co., Ltd.";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectSign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = anning.ProjectSign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtdream.hzmetroapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -283,10 +298,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bank of Hangzhou Co., Ltd.";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ProjectSign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = anning.ProjectSign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dtdream.hzmetroapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -309,6 +327,7 @@
 				4DFDDA761F593BFC00246FCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
